@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud Peluda</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+    <!-- Pantalla de bienvenida -->
+    <div class="pantalla" id="inicio">
+        <div class="contenedor">
+            <h1>🐾 SALUD PELUDA 🐾</h1>
+            <p class="subtitulo">Tu asistente de cuidado animal</p>
+            <button onclick="irAPaso1()" class="boton-principal">COMENZAR</button>
+        </div>
+    </div>
+
+    <!-- PASO 1: Nombre de la mascota -->
+    <div class="pantalla oculto" id="paso1">
+        <div class="contenedor">
+            <h2>¿Cuál es el nombre de tu mascota? 🐾</h2>
+            <div class="formulario">
+                <input type="text" id="inputNombre" placeholder="Nombre" class="input-field">
+                <button onclick="irAPaso2()" class="boton-principal">Siguiente →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASO 2: Edad de la mascota -->
+    <div class="pantalla oculto" id="paso2">
+        <div class="contenedor">
+            <h2>¿Cuántos años tiene? 🎂</h2>
+            <div class="formulario">
+                <input type="number" id="inputEdad" placeholder="Edad en años" class="input-field">
+                <button onclick="irAPaso3()" class="boton-principal">Siguiente →</button>
+                <button onclick="irAPaso1()" class="boton-volver">← Atrás</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASO 3: Especie/Tipo de mascota -->
+    <div class="pantalla oculto" id="paso3">
+        <div class="contenedor">
+            <h2>¿Cuál es su especie? 🦴</h2>
+            <div class="formulario">
+                <input type="text" id="inputEspecie" placeholder="Perro, Gato, etc." class="input-field">
+                <button onclick="irAPaso4()" class="boton-principal">Siguiente →</button>
+                <button onclick="irAPaso2()" class="boton-volver">← Atrás</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASO 4: Raza de la mascota -->
+    <div class="pantalla oculto" id="paso4">
+        <div class="contenedor">
+            <h2>¿Cuál es su raza? 🐕</h2>
+            <div class="formulario">
+                <input type="text" id="inputRaza" placeholder="Raza" class="input-field">
+                <button onclick="irAPaso5()" class="boton-principal">Siguiente →</button>
+                <button onclick="irAPaso3()" class="boton-volver">← Atrás</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASO 5: Peso de la mascota -->
+    <div class="pantalla oculto" id="paso5">
+        <div class="contenedor">
+            <h2>¿Cuánto pesa? ⚖️</h2>
+            <div class="formulario">
+                <input type="number" id="inputPeso" placeholder="Peso en kg" class="input-field">
+                <button onclick="finalizarRegistro()" class="boton-principal">✓ Guardar Perfil</button>
+                <button onclick="irAPaso4()" class="boton-volver">← Atrás</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menú principal -->
+    <div class="pantalla oculto" id="menu">
+        <div class="contenedor">
+            <h2>Menú Principal</h2>
+            <p class="bienvenida" id="bienvenida"></p>
+            <div class="botones-menu">
+                <button onclick="abrirSeccion('recordatorios')" class="boton-menu">📅 Recordatorios</button>
+                <button onclick="abrirSeccion('alimentacion')" class="boton-menu">🍖 Alimentación</button>
+                <button onclick="abrirSeccion('banos')" class="boton-menu">🛁 Baños</button>
+                <button onclick="abrirSeccion('enfermedades')" class="boton-menu">⚠️ Enfermedades</button>
+                <button onclick="abrirSeccion('ejercicio')" class="boton-menu">🏃 Ejercicio</button>
+                <button onclick="abrirSeccion('entrenamiento')" class="boton-menu">🎓 Entrenamiento</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Recordatorios -->
+    <div class="pantalla oculto" id="recordatorios">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>📅 Recordatorios de Cuidados</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">💉</span>
+                    <h3>Vacunas</h3>
+                    <p>Mantén actualizadas las vacunas de tu mascota según las recomendaciones veterinarias.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🏥</span>
+                    <h3>Revisión Veterinaria</h3>
+                    <p>Visita anual obligatoria para prevenir enfermedades y mantener buen estado de salud.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">💊</span>
+                    <h3>Medicinas</h3>
+                    <p>Administra medicinas según prescripción veterinaria a los horarios indicados.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🪥</span>
+                    <h3>Limpieza Dental</h3>
+                    <p>La higiene dental es importante para prevenir problemas de salud bucal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Alimentación -->
+    <div class="pantalla oculto" id="alimentacion">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>🍖 Alimentación Saludable</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">💧</span>
+                    <h3>Agua Fresca</h3>
+                    <p>Proporciona agua limpia y fresca diariamente. Esencial para la hidratación.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🥩</span>
+                    <h3>Proteínas</h3>
+                    <p>Alimentos ricos en proteína según la edad y peso de tu mascota: <strong id="pesoAlimentacion"></strong></p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">⛔</span>
+                    <h3>Alimentos Prohibidos</h3>
+                    <p>🚫 Chocolate • 🚫 Cebolla • 🚫 Uvas • 🚫 Aguacate • 🚫 Huesos cocidos</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">⏰</span>
+                    <h3>Horarios Regulares</h3>
+                    <p>Mantén horarios fijos de comidas. Ideal 2 comidas diarias para adultos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Baños -->
+    <div class="pantalla oculto" id="banos">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>🛁 Baños y Aseo</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">📅</span>
+                    <h3>Frecuencia</h3>
+                    <p>Baña a tu mascota cada 4-6 semanas. Más frecuente si es necesario según actividad.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🌡️</span>
+                    <h3>Temperatura del Agua</h3>
+                    <p>Usa agua tibia entre 35-37°C. Prueba con tu mano antes de bañar.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🧴</span>
+                    <h3>Champú Específico</h3>
+                    <p>Usa siempre champú formulado para mascotas. Nunca uses champú humano.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">✂️</span>
+                    <h3>Cepillado</h3>
+                    <p>Cepilla regularmente para evitar nudos y mantener el pelaje saludable.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Enfermedades -->
+    <div class="pantalla oculto" id="enfermedades">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>⚠️ Detección de Enfermedades</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta alerta">
+                    <span class="icono-grande">🤒</span>
+                    <h3>Cambios de Comportamiento</h3>
+                    <p>Apatía, irritabilidad excesiva, o letargo pueden indicar enfermedad.</p>
+                </div>
+                <div class="tarjeta alerta">
+                    <span class="icono-grande">🍖</span>
+                    <h3>Pérdida de Apetito</h3>
+                    <p>Si tu mascota deja de comer, es una señal importante de alerta.</p>
+                </div>
+                <div class="tarjeta alerta">
+                    <span class="icono-grande">🤮</span>
+                    <h3>Vómitos o Diarrea</h3>
+                    <p>Síntomas gastrointestinales pueden indicar intoxicación o enfermedad.</p>
+                </div>
+                <div class="tarjeta alerta">
+                    <span class="icono-grande">🦵</span>
+                    <h3>Cojera o Dolor</h3>
+                    <p>Dificultad para moverse o signos de dolor requieren atención veterinaria inmediata.</p>
+                </div>
+                <div class="aviso">
+                    <strong>❗ IMPORTANTE:</strong> Ante cualquier sospecha de enfermedad, consulta al veterinario lo antes posible.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Ejercicio -->
+    <div class="pantalla oculto" id="ejercicio">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>🏃 Ejercicio y Actividad Física</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">🐕</span>
+                    <h3>Paseos Diarios</h3>
+                    <p>Mínimo 2 paseos al día. La duración depende de la edad y raza de tu mascota.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🎾</span>
+                    <h3>Juegos y Diversión</h3>
+                    <p>30-60 minutos de actividad física diaria. Usa juguetes seguros y interactivos.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🏊</span>
+                    <h3>Natación</h3>
+                    <p>Excelente actividad de bajo impacto. Ideal para mascotas mayores o con problemas articulares.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">⚖️</span>
+                    <h3>Control de Peso</h3>
+                    <p>El ejercicio regular previene la obesidad. Mantén el peso ideal de tu mascota: <strong id="pesoEjercicio"></strong></p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🌡️</span>
+                    <h3>Cuidado con el Calor</h3>
+                    <p>Evita ejercicio intenso en horas calurosas. Proporciona agua fresca constantemente.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🧠</span>
+                    <h3>Estimulación Mental</h3>
+                    <p>Puzzles, juegos de buscar y entrenamiento. Mantiene la mente activa y feliz.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Entrenamiento -->
+    <div class="pantalla oculto" id="entrenamiento">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>🎓 Entrenamiento y Comportamiento</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">✋</span>
+                    <h3>Órdenes Básicas</h3>
+                    <p>Sienta, Acuéstate, Ven, Quieto. Esencial para la seguridad y control.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🎉</span>
+                    <h3>Refuerzo Positivo</h3>
+                    <p>Usa premios, elogios y caricias. Nunca castigos físicos o agresivos.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🚽</span>
+                    <h3>Adiestrador en Casa</h3>
+                    <p>Establece rutinas. Saca a tu mascota después de comer, dormir y jugar.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🧳</span>
+                    <h3>Socialización</h3>
+                    <p>Expón a tu mascota a diferentes personas, animales y entornos desde pequeño.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">⏰</span>
+                    <h3>Consistencia</h3>
+                    <p>Las reglas deben ser iguales todos los días. Todos en la familia deben aplicarlas.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🐾</span>
+                    <h3>Paciencia</h3>
+                    <p>El entrenamiento lleva tiempo. Sesiones cortas (5-10 min) son más efectivas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+    <!-- Sección: Recordatorios -->
+    <div class="pantalla oculto" id="recordatorios">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>📅 Recordatorios de Cuidados</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">💉</span>
+                    <h3>Vacunas</h3>
+                    <p>Mantén actualizadas las vacunas de tu mascota según las recomendaciones veterinarias.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🏥</span>
+                    <h3>Revisión Veterinaria</h3>
+                    <p>Visita anual obligatoria para prevenir enfermedades y mantener buen estado de salud.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">💊</span>
+                    <h3>Medicinas</h3>
+                    <p>Administra medicinas según prescripción veterinaria a los horarios indicados.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🪥</span>
+                    <h3>Limpieza Dental</h3>
+                    <p>La higiene dental es importante para prevenir problemas de salud bucal.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Alimentación -->
+    <div class="pantalla oculto" id="alimentacion">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>🍖 Alimentación Saludable</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">💧</span>
+                    <h3>Agua Fresca</h3>
+                    <p>Proporciona agua limpia y fresca diariamente. Esencial para la hidratación.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🥩</span>
+                    <h3>Proteínas</h3>
+                    <p>Alimentos ricos en proteína según la edad y peso de tu mascota: <strong id="pesoAlimentacion"></strong></p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">⛔</span>
+                    <h3>Alimentos Prohibidos</h3>
+                    <p>🚫 Chocolate • 🚫 Cebolla • 🚫 Uvas • 🚫 Aguacate • 🚫 Huesos cocidos</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">⏰</span>
+                    <h3>Horarios Regulares</h3>
+                    <p>Mantén horarios fijos de comidas. Ideal 2 comidas diarias para adultos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Baños -->
+    <div class="pantalla oculto" id="banos">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>🛁 Baños y Aseo</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">📅</span>
+                    <h3>Frecuencia</h3>
+                    <p>Baña a tu mascota cada 4-6 semanas. Más frecuente si es necesario según actividad.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🌡️</span>
+                    <h3>Temperatura del Agua</h3>
+                    <p>Usa agua tibia entre 35-37°C. Prueba con tu mano antes de bañar.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🧴</span>
+                    <h3>Champú Específico</h3>
+                    <p>Usa siempre champú formulado para mascotas. Nunca uses champú humano.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">✂️</span>
+                    <h3>Cepillado</h3>
+                    <p>Cepilla regularmente para evitar nudos y mantener el pelaje saludable.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Enfermedades -->
+    <div class="pantalla oculto" id="enfermedades">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>⚠️ Detección de Enfermedades</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta alerta">
+                    <span class="icono-grande">🤒</span>
+                    <h3>Cambios de Comportamiento</h3>
+                    <p>Apatía, irritabilidad excesiva, o letargo pueden indicar enfermedad.</p>
+                </div>
+                <div class="tarjeta alerta">
+                    <span class="icono-grande">🍖</span>
+                    <h3>Pérdida de Apetito</h3>
+                    <p>Si tu mascota deja de comer, es una señal importante de alerta.</p>
+                </div>
+                <div class="tarjeta alerta">
+                    <span class="icono-grande">🤮</span>
+                    <h3>Vómitos o Diarrea</h3>
+                    <p>Síntomas gastrointestinales pueden indicar intoxicación o enfermedad.</p>
+                </div>
+                <div class="tarjeta alerta">
+                    <span class="icono-grande">🦵</span>
+                    <h3>Cojera o Dolor</h3>
+                    <p>Dificultad para moverse o signos de dolor requieren atención veterinaria inmediata.</p>
+                </div>
+                <div class="aviso">
+                    <strong>❗ IMPORTANTE:</strong> Ante cualquier sospecha de enfermedad, consulta al veterinario lo antes posible.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Ejercicio -->
+    <div class="pantalla oculto" id="ejercicio">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>🏃 Ejercicio y Actividad Física</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">🐕</span>
+                    <h3>Paseos Diarios</h3>
+                    <p>Mínimo 2 paseos al día. La duración depende de la edad y raza de tu mascota.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🎾</span>
+                    <h3>Juegos y Diversión</h3>
+                    <p>30-60 minutos de actividad física diaria. Usa juguetes seguros y interactivos.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🏊</span>
+                    <h3>Natación</h3>
+                    <p>Excelente actividad de bajo impacto. Ideal para mascotas mayores o con problemas articulares.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">⚖️</span>
+                    <h3>Control de Peso</h3>
+                    <p>El ejercicio regular previene la obesidad. Mantén el peso ideal de tu mascota: <strong id="pesoEjercicio"></strong></p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🌡️</span>
+                    <h3>Cuidado con el Calor</h3>
+                    <p>Evita ejercicio intenso en horas calurosas. Proporciona agua fresca constantemente.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🧠</span>
+                    <h3>Estimulación Mental</h3>
+                    <p>Puzzles, juegos de buscar y entrenamiento. Mantiene la mente activa y feliz.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección: Entrenamiento -->
+    <div class="pantalla oculto" id="entrenamiento">
+        <div class="contenedor">
+            <button class="boton-volver" onclick="mostrarMenu()">← Volver</button>
+            <h2>🎓 Entrenamiento y Comportamiento</h2>
+            <div class="seccion-contenido">
+                <div class="tarjeta">
+                    <span class="icono-grande">✋</span>
+                    <h3>Órdenes Básicas</h3>
+                    <p>Sienta, Acuéstate, Ven, Quieto. Esencial para la seguridad y control.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🎉</span>
+                    <h3>Refuerzo Positivo</h3>
+                    <p>Usa premios, elogios y caricias. Nunca castigos físicos o agresivos.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🚽</span>
+                    <h3>Adiestrador en Casa</h3>
+                    <p>Establece rutinas. Saca a tu mascota después de comer, dormir y jugar.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🧳</span>
+                    <h3>Socialización</h3>
+                    <p>Expón a tu mascota a diferentes personas, animales y entornos desde pequeño.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">⏰</span>
+                    <h3>Consistencia</h3>
+                    <p>Las reglas deben ser iguales todos los días. Todos en la familia deben aplicarlas.</p>
+                </div>
+                <div class="tarjeta">
+                    <span class="icono-grande">🐾</span>
+                    <h3>Paciencia</h3>
+                    <p>El entrenamiento lleva tiempo. Sesiones cortas (5-10 min) son más efectivas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

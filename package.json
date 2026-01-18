@@ -1,0 +1,16 @@
+{
+  "name": "salud-peluda",
+  "version": "1.0.0",
+  "description": "Aplicación de cuidado animal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["mascota", "cuidado", "salud"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

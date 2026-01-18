@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud Peluda - Test</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial; background: linear-gradient(180deg, #87ceeb 0%, #b3d9ff 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; }
+        .pantalla { background: white; padding: 40px; border-radius: 15px; max-width: 500px; text-align: center; display: block; }
+        .pantalla.oculto { display: none !important; }
+        button { padding: 12px 30px; background: #7ec8ff; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; margin: 10px 0; width: 100%; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #b3d9ff; border-radius: 8px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="pantalla" id="inicio">
+        <h1>🐾 SALUD PELUDA 🐾</h1>
+        <button onclick="irAPaso1()">COMENZAR</button>
+    </div>
+
+    <div class="pantalla oculto" id="paso1">
+        <h2>¿Nombre? 🐾</h2>
+        <input type="text" id="inputNombre" placeholder="Nombre">
+        <button onclick="irAPaso2()">Siguiente →</button>
+        <button onclick="irAPaso1()">← Atrás</button>
+    </div>
+
+    <div class="pantalla oculto" id="paso2">
+        <h2>¿Edad? 🎂</h2>
+        <input type="number" id="inputEdad" placeholder="Edad">
+        <button onclick="irAPaso3()">Siguiente →</button>
+        <button onclick="irAPaso1()">← Atrás</button>
+    </div>
+
+    <div class="pantalla oculto" id="paso3">
+        <h2>¿Especie? 🦴</h2>
+        <input type="text" id="inputEspecie" placeholder="Especie">
+        <button onclick="irAPaso4()">Siguiente →</button>
+        <button onclick="irAPaso2()">← Atrás</button>
+    </div>
+
+    <div class="pantalla oculto" id="paso4">
+        <h2>¿Raza? 🐕</h2>
+        <input type="text" id="inputRaza" placeholder="Raza">
+        <button onclick="irAPaso5()">Siguiente →</button>
+        <button onclick="irAPaso3()">← Atrás</button>
+    </div>
+
+    <div class="pantalla oculto" id="paso5">
+        <h2>¿Peso? ⚖️</h2>
+        <input type="number" id="inputPeso" placeholder="Peso">
+        <button onclick="finalizarRegistro()">✓ Guardar</button>
+        <button onclick="irAPaso4()">← Atrás</button>
+    </div>
+
+    <div class="pantalla oculto" id="menu">
+        <h2>Menú Principal</h2>
+        <p id="bienvenida"></p>
+        <button onclick="alert('Sección 1')">📅 Recordatorios</button>
+        <button onclick="alert('Sección 2')">🍖 Alimentación</button>
+        <button onclick="alert('Sección 3')">🛁 Baños</button>
+    </div>
+
+    <script>
+        let mascota = { nombre: '', edad: '', especie: '', raza: '', peso: '' };
+
+        function ocultarTodos() {
+            const ids = ['inicio', 'paso1', 'paso2', 'paso3', 'paso4', 'paso5', 'menu'];
+            ids.forEach(id => {
+                const elem = document.getElementById(id);
+                if (elem) elem.classList.add('oculto');
+            });
+        }
+
+        function irAPaso1() {
+            console.log('→ Paso 1');
+            ocultarTodos();
+            document.getElementById('paso1').classList.remove('oculto');
+            document.getElementById('inputNombre').focus();
+        }
+
+        function irAPaso2() {
+            const nombre = document.getElementById('inputNombre').value.trim();
+            if (!nombre) { alert('Nombre requerido'); return; }
+            mascota.nombre = nombre;
+            console.log('→ Paso 2');
+            ocultarTodos();
+            document.getElementById('paso2').classList.remove('oculto');
+            document.getElementById('inputEdad').focus();
+        }
+
+        function irAPaso3() {
+            const edad = document.getElementById('inputEdad').value.trim();
+            if (!edad) { alert('Edad requerida'); return; }
+            mascota.edad = edad;
+            console.log('→ Paso 3');
+            ocultarTodos();
+            document.getElementById('paso3').classList.remove('oculto');
+            document.getElementById('inputEspecie').focus();
+        }
+
+        function irAPaso4() {
+            const especie = document.getElementById('inputEspecie').value.trim();
+            if (!especie) { alert('Especie requerida'); return; }
+            mascota.especie = especie;
+            console.log('→ Paso 4');
+            ocultarTodos();
+            document.getElementById('paso4').classList.remove('oculto');
+            document.getElementById('inputRaza').focus();
+        }
+
+        function irAPaso5() {
+            const raza = document.getElementById('inputRaza').value.trim();
+            if (!raza) { alert('Raza requerida'); return; }
+            mascota.raza = raza;
+            console.log('→ Paso 5');
+            ocultarTodos();
+            document.getElementById('paso5').classList.remove('oculto');
+            document.getElementById('inputPeso').focus();
+        }
+
+        function finalizarRegistro() {
+            const peso = document.getElementById('inputPeso').value.trim();
+            if (!peso) { alert('Peso requerido'); return; }
+            mascota.peso = peso;
+            alert(`✅ ${mascota.nombre} guardado!\nEspecie: ${mascota.especie}\nRaza: ${mascota.raza}\nEdad: ${mascota.edad}\nPeso: ${mascota.peso}`);
+            mostrarMenu();
+        }
+
+        function mostrarMenu() {
+            console.log('→ Menú');
+            ocultarTodos();
+            document.getElementById('menu').classList.remove('oculto');
+            document.getElementById('bienvenida').textContent = `👋 Bienvenido, ${mascota.nombre}!`;
+        }
+
+        console.log('✅ Script cargado correctamente');
+    </script>
+</body>
+</html>

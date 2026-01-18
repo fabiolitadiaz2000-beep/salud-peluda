@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Salud Peluda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Pantalla de bienvenida -->
+    <div class="pantalla" id="inicio">
+        <h1>BIENVENIDO A LA APLICACIÓN<br>DE CUIDADO ANIMAL</h1>
+        <button onclick="mostrarRegistro()">COMENZAR</button>
+    </div>
+
+    <!-- Registro de mascota -->
+    <div class="pantalla oculto" id="registro">
+        <h2>REGISTRO DE MASCOTA</h2>
+
+        <input type="text" placeholder="Nombre">
+        <input type="number" placeholder="Edad">
+        <input type="text" placeholder="Especie">
+        <input type="text" placeholder="Raza">
+        <input type="number" placeholder="Peso">
+
+        <button onclick="mostrarMenu()">GUARDAR PERFIL</button>
+    </div>
+
+    <!-- Menú principal -->
+    <div class="pantalla oculto" id="menu">
+        <h2>AGENDA DE CUIDADOS</h2>
+        <button>Agregar recordatorio</button>
+
+        <h2>CONSEJOS Y BIENESTAR</h2>
+        <button>Alimentación saludable</button>
+        <button>Baños recomendados</button>
+        <button>Cómo detectar enfermedades</button>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
