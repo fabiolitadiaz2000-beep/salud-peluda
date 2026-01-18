@@ -1,6 +1,6 @@
 {
   "name": "salud-peluda",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Aplicación de cuidado animal",
   "main": "server.js",
   "scripts": {
