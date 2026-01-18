@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 // Extensiones permitidas para servir
 const allowedExtensions = new Set(['.html', '.htm', '.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico']);
